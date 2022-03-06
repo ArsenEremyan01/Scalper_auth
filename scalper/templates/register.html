@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+</head>
+<body>
+<h1>Регистрация</h1>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<form method="POST">
+    <table>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" name="email"></td>
+        </tr>
+        <tr>
+            <td>Пароль</td>
+            <td><input type="password" name="password"></td>
+        </tr>
+        <tr>
+            <td>Повторите пароль</td>
+            <td><input type="password" name="password2"></td>
+        </tr>
+        <tr>
+            <td><a href="{{ url_for('login_page') }}">Авторизация</a></td>
+            <td><input type="submit" value="Зарегистрироваться"></td>
+        </tr>
+        <div class="g-recaptcha" data-sitekey="6LfhyLoeAAAAABVRtvu-qxOCnTkuT04Gq31o7o4b"></div>
+    </table>
+</form>
+</body>
+</html>
